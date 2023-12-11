@@ -10,7 +10,14 @@ type FormValues = {
 };
 
 export const YouTubeForm = () => {
-  const form = useForm<FormValues>();
+  // If we add default values, we don't need to specify FormValues, if will automatically infer the types
+  const form = useForm({
+    defaultValues: {
+      username: "Batman",
+      email: "",
+      channel: "",
+    },
+  });
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;
 
