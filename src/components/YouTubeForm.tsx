@@ -1,5 +1,6 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import { useMemo } from "react";
 // import { useEffect } from "react";
 
 let renderCount = 0;
@@ -53,7 +54,7 @@ export const YouTubeForm = () => {
     control,
     handleSubmit,
     formState,
-    // watch,
+    watch,
     getValues,
     setValue,
   } = form;
@@ -164,7 +165,15 @@ export const YouTubeForm = () => {
 
         <div className="form-control">
           <label htmlFor="twitter">Twitter</label>
-          <input type="text" id="twitter" {...register("social.twitter")} />
+          <input
+            type="text"
+            id="twitter"
+            {...register("social.twitter", {
+              // disabled: false,
+              disabled: watch("channel") === "",
+              required: "Enter twitter profile",
+            })}
+          />
         </div>
 
         <div className="form-control">
