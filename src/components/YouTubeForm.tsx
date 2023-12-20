@@ -57,16 +57,13 @@ export const YouTubeForm = () => {
     getValues,
     setValue,
   } = form;
-  const {
-    errors,
-    // touchedFields, dirtyFields
-  } = formState;
+  const { errors, touchedFields, dirtyFields, isDirty, isValid } = formState;
   const { fields, append, remove } = useFieldArray({
     name: "phNumbers",
     control,
   });
 
-  // console.log({ touchedFields, dirtyFields });
+  console.log({ touchedFields, dirtyFields, isDirty, isValid });
 
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted ", data);
@@ -255,7 +252,7 @@ export const YouTubeForm = () => {
           <p className="error">{errors.dob?.message}</p>
         </div>
 
-        <button>Submit</button>
+        <button disabled={!isDirty || !isValid}>Submit</button>
         <button type="button" onClick={handleGetvalues}>
           Get values
         </button>
