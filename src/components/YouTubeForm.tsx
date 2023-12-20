@@ -37,7 +37,7 @@ export const YouTubeForm = () => {
       age: 0,
       dob: new Date(),
     },
-    mode: "onTouched",
+    mode: "onSubmit",
     // defaultValues: async () => {
     //   const response = await fetch(
     //     "https://jsonplaceholder.typicode.com/users/1"
@@ -59,6 +59,7 @@ export const YouTubeForm = () => {
     getValues,
     setValue,
     reset,
+    trigger,
   } = form;
   const {
     errors,
@@ -288,6 +289,10 @@ export const YouTubeForm = () => {
         </button>
         <button type="button" onClick={handleSetvalue}>
           Set value
+        </button>
+        {/* <button type="button" onClick={() => trigger()}> */}
+        <button type="button" onClick={() => trigger("channel")}>
+          Validate
         </button>
       </form>
       <DevTool control={control} />
