@@ -57,13 +57,24 @@ export const YouTubeForm = () => {
     getValues,
     setValue,
   } = form;
-  const { errors, touchedFields, dirtyFields, isDirty, isValid } = formState;
+  const {
+    errors,
+    touchedFields,
+    dirtyFields,
+    isDirty,
+    isValid,
+    isSubmitting,
+    isSubmitted,
+    isSubmitSuccessful,
+    submitCount,
+  } = formState;
   const { fields, append, remove } = useFieldArray({
     name: "phNumbers",
     control,
   });
 
-  console.log({ touchedFields, dirtyFields, isDirty, isValid });
+  // console.log({ touchedFields, dirtyFields, isDirty, isValid });
+  console.log({ isSubmitting, isSubmitted, isSubmitSuccessful, submitCount });
 
   const onSubmit = (data: FormValues) => {
     console.log("Form submitted ", data);
